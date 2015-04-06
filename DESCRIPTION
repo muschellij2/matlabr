@@ -1,0 +1,10 @@
+Package: matlabr
+Type: Package
+Title: MATLAB From R With System Calls
+Version: 1.0
+Date: 2015-04-06
+Author: John Muschelli <muschellij2@gmail.com>
+Maintainer: John Muschelli <muschellij2@gmail.com>
+Description: This small packages calls matlab from R and runs MATLAB
+License: GPL-3
+SystemRequirements: MATLAB
