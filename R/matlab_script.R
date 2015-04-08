@@ -66,6 +66,7 @@ run_matlab_script = function(fname, ...){
 #' }
 run_matlab_code = function(code, endlines = TRUE, ...){
   matcmd = get_matlab()
+  code = c(paste0("cd('", getwd(), "');"), code)
   sep = ifelse(endlines, ";", " ")
   code = paste0(code, sep=sep, collapse= "\n")
   code = gsub(";;", ";", code)
