@@ -57,6 +57,7 @@ run_matlab_script = function(fname, ...){
 #' @param code Character vector of code. 
 #' @param endlines Logical of whether the semicolon (;) should be
 #' pasted to each element of the vector.
+#' @param verbose Print out filename to run
 #' @param ... Options passed to \code{\link{run_matlab_script}}
 #' @export
 #' @return Exit status of matlab code 
@@ -64,7 +65,8 @@ run_matlab_script = function(fname, ...){
 #' if (have_matlab()){
 #'    run_matlab_code("version", endlines = FALSE)
 #' }
-run_matlab_code = function(code, endlines = TRUE, ...){
+run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
+                           ...){
   matcmd = get_matlab()
   code = c(paste0("cd('", getwd(), "');"), code)
   sep = ifelse(endlines, ";", " ")
@@ -79,6 +81,9 @@ run_matlab_code = function(code, endlines = TRUE, ...){
   cmd = code
   fname = tempfile(fileext = ".m")
   cat(cmd, file = fname)
+  if (verbose){
+    cat(paste0(fname, "\n"))
+  }
   x = run_matlab_script(fname, ...)
   return(x)
 }

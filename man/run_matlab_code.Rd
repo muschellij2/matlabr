@@ -4,13 +4,15 @@
 \alias{run_matlab_code}
 \title{Runs matlab code}
 \usage{
-run_matlab_code(code, endlines = TRUE, ...)
+run_matlab_code(code, endlines = TRUE, verbose = TRUE, ...)
 }
 \arguments{
 \item{code}{Character vector of code.}
 
 \item{endlines}{Logical of whether the semicolon (;) should be
 pasted to each element of the vector.}
+
+\item{verbose}{Print out filename to run}
 
 \item{...}{Options passed to \code{\link{run_matlab_script}}}
 }
