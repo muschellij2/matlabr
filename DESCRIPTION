@@ -6,5 +6,7 @@ Date: 2015-04-06
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: This small packages calls MATLAB from R and runs MATLAB code.
+Imports:
+  stringr
 License: GPL-3
 SystemRequirements: MATLAB
