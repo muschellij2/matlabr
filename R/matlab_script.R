@@ -113,13 +113,15 @@ rvec_to_matlabclist = function(x, matname = NULL){
 #' @description This function takes in an R numeric and returns a
 #' status
 #' @param x Numeric vector of values
+#' @param row Create row vector instead of column vector
 #' @param matname Object in matlab to be assigned
 #' @export
 #' @return Character scalar of matlab code
-rvec_to_matlab = function(x, matname = NULL){
-  x = paste0(x, ";")
+rvec_to_matlab = function(x, row = FALSE,
+                          matname = NULL){
+  x = paste0(x, ifelse(row, ",", ";"))
   x = paste(x, collapse= " ")
-  x = paste0('[', x, '];')
+  x = paste0("[", x, "];")
   if (!is.null(matname)) x = paste0(matname, " = ", x)
   x
 }
