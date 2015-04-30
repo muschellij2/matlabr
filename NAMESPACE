@@ -2,6 +2,7 @@
 
 export(get_matlab)
 export(have_matlab)
+export(rmat_to_matlab_mat)
 export(run_matlab_code)
 export(run_matlab_script)
 export(rvec_to_matlab)
