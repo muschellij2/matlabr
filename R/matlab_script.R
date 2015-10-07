@@ -15,6 +15,7 @@ get_matlab = function(){
     mpath = getOption("matlab.path")
     stopifnot(!is.null(mpath))
     stopifnot(file.exists(mpath))
+    mpath = shQuote(mpath)
     matcmd <- file.path(mpath, matcmd)
   }
   return(matcmd)
