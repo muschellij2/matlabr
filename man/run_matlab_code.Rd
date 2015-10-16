@@ -4,7 +4,8 @@
 \alias{run_matlab_code}
 \title{Runs matlab code}
 \usage{
-run_matlab_code(code, endlines = TRUE, verbose = TRUE, ...)
+run_matlab_code(code, endlines = TRUE, verbose = TRUE,
+  add_clear_all = FALSE, ...)
 }
 \arguments{
 \item{code}{Character vector of code.}
@@ -13,6 +14,8 @@ run_matlab_code(code, endlines = TRUE, verbose = TRUE, ...)
 pasted to each element of the vector.}
 
 \item{verbose}{Print out filename to run}
+
+\item{add_clear_all}{Add \code{clear all;} to the beginning of code}
 
 \item{...}{Options passed to \code{\link{run_matlab_script}}}
 }

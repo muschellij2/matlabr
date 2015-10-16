@@ -63,6 +63,7 @@ run_matlab_script = function(fname, ...){
 #' @param endlines Logical of whether the semicolon (;) should be
 #' pasted to each element of the vector.
 #' @param verbose Print out filename to run
+#' @param add_clear_all Add \code{clear all;} to the beginning of code
 #' @param ... Options passed to \code{\link{run_matlab_script}}
 #' @export
 #' @return Exit status of matlab code 
@@ -71,9 +72,11 @@ run_matlab_script = function(fname, ...){
 #'    run_matlab_code("version", endlines = FALSE)
 #' }
 run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
+                           add_clear_all = FALSE,
                            ...){
   matcmd = get_matlab()
-  code = c(paste0("cd('", getwd(), "');"), code)
+  code = c(ifelse(add_clear_all, "clear all;", ""), 
+           paste0("cd('", getwd(), "');"), code)
   sep = ifelse(endlines, ";", " ")
   code = paste0(code, sep=sep, collapse= "\n")
   code = gsub(";;", ";", code)
