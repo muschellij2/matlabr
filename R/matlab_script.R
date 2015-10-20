@@ -69,7 +69,9 @@ run_matlab_script = function(fname, ...){
 #' @return Exit status of matlab code 
 #' @examples 
 #' if (have_matlab()){
-#'    run_matlab_code("version", endlines = FALSE)
+#'    run_matlab_code("disp(version)")
+#'    run_matlab_code(c("disp('The version of the matlab is:')", "disp(version)"))
+#'    run_matlab_code(c("x = 5", "disp(['The value of x is ', num2str(x)])"))
 #' }
 run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
                            add_clear_all = FALSE,
@@ -78,7 +80,7 @@ run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
   code = c(ifelse(add_clear_all, "clear all;", ""), 
            paste0("cd('", getwd(), "');"), code)
   sep = ifelse(endlines, ";", " ")
-  code = paste0(code, sep=sep, collapse= "\n")
+  code = paste0(code, sep = sep, collapse= "\n")
   code = gsub(";;", ";", code)
 #   cmd <- paste(' "try \n')
 #   cmd <- paste(cmd, code)

@@ -6,4 +6,4 @@
 
 ## MISC
 
-- in this NEWS file, #n means the issue number on GitHub, e.g. #142 is https://github.com/yihui/matlabr/issues/142
+- in this NEWS file, #n means the issue number on GitHub, e.g. #142 is https://github.com/muschellij2/matlabr/issues/142
