@@ -6,10 +6,10 @@
 #' @return Character of command for matlab
 get_matlab = function(){
   # find.matlab <- system("which matlab", ignore.stdout=TRUE)
-  find.matlab = as.numeric(Sys.which("matlab") != "")
   mat = paste0("matlab", 
                ifelse(.Platform$OS.type %in% "windows", ".exe", "")
   )
+  find.matlab = as.numeric(Sys.which(mat) == "")
   matcmd <- paste0(mat, ' -nodesktop -nosplash -nodisplay -r ')
   if (find.matlab != 0){
     mpath = getOption("matlab.path")
