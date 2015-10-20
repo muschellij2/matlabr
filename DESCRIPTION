@@ -1,11 +1,13 @@
 Package: matlabr
 Type: Package
-Title: MATLAB from R with System Calls
+Title: An Interface for MATLAB using System Calls
 Version: 1.1
 Date: 2015-10-16
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
-Description: MATLAB calls are done in R from the system command and runs MATLAB code.  This is in comparison to R.matlab, which creates a MATLAB server.
+Description: Provides users to call MATLAB from using the "system" command.
+  Allows users to submit lines of code or MATLAB m files.
+  This is in comparison to 'R.matlab', which creates a MATLAB server.
 Imports:
   stringr
 License: GPL-3
