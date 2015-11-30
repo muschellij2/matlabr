@@ -1,14 +1,15 @@
 Package: matlabr
 Type: Package
 Title: An Interface for MATLAB using System Calls
-Version: 1.1
-Date: 2015-10-16
+Version: 1.1.2
+Date: 2015-11-30
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Provides users to call MATLAB from using the "system" command.
-  Allows users to submit lines of code or MATLAB m files.
-  This is in comparison to 'R.matlab', which creates a MATLAB server.
+    Allows users to submit lines of code or MATLAB m files.
+    This is in comparison to 'R.matlab', which creates a MATLAB server.
 Imports:
-  stringr
+    stringr
 License: GPL-3
 SystemRequirements: MATLAB
+RoxygenNote: 5.0.0
