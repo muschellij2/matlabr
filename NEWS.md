@@ -1,3 +1,9 @@
+# CHANGES IN matlabr VERSION 1.1.2
+
+## NEW FEATURES
+
+- Added `have_matlab` to have logical check for matlab
+
 # CHANGES IN matlabr VERSION 1.1
 
 ## NEW FEATURES
