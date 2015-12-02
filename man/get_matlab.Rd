@@ -4,7 +4,12 @@
 \alias{get_matlab}
 \title{Find matlab path}
 \usage{
-get_matlab()
+get_matlab(try_defaults = TRUE)
+}
+\arguments{
+\item{try_defaults}{(logical) If \code{matlab} is not found from 
+\code{Sys.which}, and \code{matlab.path} not found, then try some 
+default PATHs for Linux and OS X.}
 }
 \value{
 Character of command for matlab

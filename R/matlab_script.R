@@ -2,17 +2,44 @@
 #'
 #' @description This tries to find matlab's path using a system which
 #' command, and then, if not found, looks at \code{getOption("matlab.path")}.  If not path is found, it fails.
+#' @param try_defaults (logical) If \code{matlab} is not found from 
+#' \code{Sys.which}, and \code{matlab.path} not found, then try some 
+#' default PATHs for Linux and OS X.  
 #' @export
 #' @return Character of command for matlab
-get_matlab = function(){
+get_matlab = function(try_defaults = TRUE){
   # find.matlab <- system("which matlab", ignore.stdout=TRUE)
   mat = paste0("matlab", 
                ifelse(.Platform$OS.type %in% "windows", ".exe", "")
   )
   find.matlab = as.numeric(Sys.which(mat) == "")
   matcmd <- paste0(mat, ' -nodesktop -nosplash -nodisplay -r ')
-  if (find.matlab != 0){
+  if (find.matlab != 0) {
     mpath = getOption("matlab.path")
+    
+    ####################################
+    # Trying defaults
+    ####################################    
+    if (is.null(mpath)) {
+      if (try_defaults) {
+        mac_ends = c(outer(2015:2010, c("a", "b"), paste0))
+        def_paths = c(
+          "/usr/local/bin",
+          "/usr/bin",
+          paste0("/Applications/MATLAB_R", mac_ends, ".app/bin")
+        )
+        for (ipath in def_paths) {
+          def_path = file.path(ipath, mat)
+          if (file.exists(def_path)) {
+            warning(paste0("Setting matlab.path to ", ipath))
+            options(matlab.path = ipath)
+            mpath = ipath
+            break;
+          } # end def_path
+        } # end loop
+      } # end try_defaults
+    } # end null mpath
+    
     stopifnot(!is.null(mpath))
     stopifnot(file.exists(mpath))
     mpath = shQuote(mpath)
@@ -28,8 +55,8 @@ get_matlab = function(){
 #' @export
 #' @return Logical \code{TRUE} is MATLAB is accessible, \code{FALSE} if not
 have_matlab = function(){
-    x = suppressWarnings(try(get_matlab(), silent=TRUE))
-    return(!inherits(x, "try-error"))
+  x = suppressWarnings(try(get_matlab(), silent=TRUE))
+  return(!inherits(x, "try-error"))
 }
 
 
@@ -94,12 +121,12 @@ run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
   sep = ifelse(endlines, ";", " ")
   code = paste0(code, sep = sep, collapse= "\n")
   code = gsub(";;", ";", code)
-#   cmd <- paste(' "try \n')
-#   cmd <- paste(cmd, code)
-#   cmd <- paste(cmd, "\n catch err \n disp(err.message); \n exit(1); \n")
-#   cmd <- paste0(cmd, 'end; \n exit(0);"')
-#   cmd = gsub("\n", ";", cmd)
-#   cmd = paste0(matcmd, cmd)
+  #   cmd <- paste(' "try \n')
+  #   cmd <- paste(cmd, code)
+  #   cmd <- paste(cmd, "\n catch err \n disp(err.message); \n exit(1); \n")
+  #   cmd <- paste0(cmd, 'end; \n exit(0);"')
+  #   cmd = gsub("\n", ";", cmd)
+  #   cmd = paste0(matcmd, cmd)
   cmd = code
   fname = tempfile(fileext = ".m")
   cat(cmd, file = fname)
