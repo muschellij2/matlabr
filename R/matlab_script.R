@@ -22,7 +22,9 @@ get_matlab = function(try_defaults = TRUE){
     ####################################    
     if (is.null(mpath)) {
       if (try_defaults) {
-        mac_ends = c(outer(2015:2010, c("a", "b"), paste0))
+        this.year = as.numeric(format(Sys.Date(), "%Y"))
+        years = seq(this.year + 1, this.year - 5, by = -1)
+        mac_ends = c(outer(years, c("a", "b"), paste0))
         def_paths = c(
           "/usr/local/bin",
           "/usr/bin",
