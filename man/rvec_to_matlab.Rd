@@ -20,4 +20,3 @@ Character scalar of matlab code
 This function takes in an R numeric and returns a
 status
 }
-

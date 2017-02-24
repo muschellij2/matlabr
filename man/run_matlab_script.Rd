@@ -18,4 +18,3 @@ Exit status of matlab code
 This function runs a matlab script, and 
 returns exit statuses
 }
-

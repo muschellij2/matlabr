@@ -62,19 +62,6 @@ have_matlab = function(){
 }
 
 
-#' @title Logical check if MALTAB is accessible
-#' @description Uses \code{get_matlab} to check if MATLAB is accessible 
-#' or the option
-#' \code{matlab.path} is set and returns logical
-#' @return Logical TRUE is MALTAB is accessible, FALSE if not
-#' @export
-#' @examples
-#' have_matlab()
-have_matlab = function(){
-  x = suppressWarnings(try(get_matlab(), silent=TRUE))
-  return(!inherits(x, "try-error"))
-}
-
 
 #' @title Run matlab script
 #'

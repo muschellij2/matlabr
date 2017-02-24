@@ -5,23 +5,11 @@
 \title{Logical check if MATLAB is accessible}
 \usage{
 have_matlab()
-
-have_matlab()
 }
 \value{
 Logical \code{TRUE} is MATLAB is accessible, \code{FALSE} if not
-
-Logical TRUE is MALTAB is accessible, FALSE if not
 }
 \description{
 Uses \code{\link{get_matlab}} to check if 
 MATLAB's path accessible
-
-Uses \code{get_matlab} to check if MATLAB is accessible 
-or the option
-\code{matlab.path} is set and returns logical
 }
-\examples{
-have_matlab()
-}
-

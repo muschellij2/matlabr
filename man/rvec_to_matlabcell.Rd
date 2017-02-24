@@ -20,4 +20,3 @@ Character scalar of matlab code
 This function takes in an R vector then turns it into 
 a cell
 }
-

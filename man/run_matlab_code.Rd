@@ -34,4 +34,3 @@ if (have_matlab()){
    run_matlab_code(c("x = 5", "disp(['The value of x is ', num2str(x)])"))
 }
 }
-
