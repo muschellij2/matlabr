@@ -4,12 +4,15 @@
 \alias{rvec_to_matlab}
 \title{Convert R vector to matlab cell mat}
 \usage{
-rvec_to_matlab(x, row = FALSE, matname = NULL)
+rvec_to_matlab(x, row = FALSE, sep = NULL, matname = NULL)
 }
 \arguments{
 \item{x}{Numeric vector of values}
 
 \item{row}{Create row vector instead of column vector}
+
+\item{sep}{separator to use to separate cells.  Will override row
+argument}
 
 \item{matname}{Object in matlab to be assigned}
 }
