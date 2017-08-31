@@ -68,16 +68,22 @@ have_matlab = function(){
 #' @description This function runs a matlab script, and 
 #' returns exit statuses
 #' @param fname Filename of matlab script (.m file)
+#' @param verbose print diagnostic messages
 #' @param ... Options passed to \code{\link{system}}
 #' @export
 #' @return Exit status of matlab code
-run_matlab_script = function(fname, ...){
+run_matlab_script = function(fname, 
+                             verbose = TRUE, ...){
   stopifnot(file.exists(fname))
   matcmd = get_matlab()
   cmd = paste0(' "', "try, run('", fname, "'); ",
                "catch err, disp(err.message); ", 
                "exit(1); end; exit(0);", '"')  
   cmd = paste0(matcmd, cmd)
+  if (verbose) {
+    message("Command run is:")
+    message(cmd)
+  }
   x <- system(cmd, ...)
   return(x)
 }
@@ -119,10 +125,10 @@ run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
   cmd = code
   fname = tempfile(fileext = ".m")
   cat(cmd, file = fname)
-  if (verbose){
-    cat(paste0(fname, "\n"))
+  if (verbose) {
+    message(paste0("Script created: ", fname))
   }
-  x = run_matlab_script(fname, ...)
+  x = run_matlab_script(fname, verbose = verbose, ...)
   return(x)
 }
 
@@ -138,7 +144,7 @@ run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
 #' @return Character scalar of matlab code
 rvec_to_matlabclist = function(x, matname = NULL){
   x = paste0("{'", x, "'};")
-  x = paste(x, collapse= " ")
+  x = paste(x, collapse =  " ")
   x = paste0('[', x, '];')
   if (!is.null(matname)) x = paste0(matname, " = ", x)
   x
@@ -161,7 +167,7 @@ rvec_to_matlabclist = function(x, matname = NULL){
 rvec_to_matlab = function(x, row = FALSE,
                           sep = NULL,
                           matname = NULL){
-  if (!is.null(sep)) {
+  if (is.null(sep)) {
     sep = ifelse(row, ",", ";")
   }
   x = paste0(x, sep)

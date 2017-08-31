@@ -4,10 +4,12 @@
 \alias{run_matlab_script}
 \title{Run matlab script}
 \usage{
-run_matlab_script(fname, ...)
+run_matlab_script(fname, verbose = TRUE, ...)
 }
 \arguments{
 \item{fname}{Filename of matlab script (.m file)}
+
+\item{verbose}{print diagnostic messages}
 
 \item{...}{Options passed to \code{\link{system}}}
 }

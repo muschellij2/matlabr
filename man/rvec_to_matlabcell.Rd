@@ -4,10 +4,13 @@
 \alias{rvec_to_matlabcell}
 \title{Convert R vector to matlab cell}
 \usage{
-rvec_to_matlabcell(x, matname = NULL, transpose = FALSE)
+rvec_to_matlabcell(x, sep = ";", matname = NULL, transpose = FALSE)
 }
 \arguments{
 \item{x}{Character vector of values}
+
+\item{sep}{separator to use to separate values. Defaults to ";"
+argument}
 
 \item{matname}{Object in matlab to be assigned}
 
