@@ -9,8 +9,12 @@
 #' @return Character of command for matlab
 get_matlab = function(try_defaults = TRUE){
   # find.matlab <- system("which matlab", ignore.stdout=TRUE)
-  mat = paste0("matlab", 
-               ifelse(.Platform$OS.type %in% "windows", ".exe", "")
+  mat = paste0(
+    "matlab", 
+    ifelse(
+      .Platform$OS.type %in% "windows", 
+      ".exe", 
+      "")
   )
   find.matlab = as.numeric(Sys.which(mat) == "")
   matcmd <- paste0(mat, ' -nodesktop -nosplash -nodisplay -r ')
@@ -57,7 +61,7 @@ get_matlab = function(try_defaults = TRUE){
 #' @export
 #' @return Logical \code{TRUE} is MATLAB is accessible, \code{FALSE} if not
 have_matlab = function(){
-  x = suppressWarnings(try(get_matlab(), silent=TRUE))
+  x = suppressWarnings(try(get_matlab(), silent = TRUE))
   return(!inherits(x, "try-error"))
 }
 
@@ -110,11 +114,11 @@ run_matlab_script = function(fname,
 run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
                            add_clear_all = FALSE,
                            ...){
-  matcmd = get_matlab()
+  # matcmd = get_matlab()
   code = c(ifelse(add_clear_all, "clear all;", ""), 
            paste0("cd('", getwd(), "');"), code)
   sep = ifelse(endlines, ";", " ")
-  code = paste0(code, sep = sep, collapse= "\n")
+  code = paste0(code, sep = sep, collapse = "\n")
   code = gsub(";;", ";", code)
   #   cmd <- paste(' "try \n')
   #   cmd <- paste(cmd, code)
