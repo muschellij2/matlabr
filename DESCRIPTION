@@ -11,6 +11,7 @@ Description: Provides users to call MATLAB from using the "system" command.
 Imports:
     stringr
 License: GPL-2
+Encoding: UTF-8
 SystemRequirements: MATLAB
 BugReports: https://github.com/muschellij2/matlabr/issues
 RoxygenNote: 6.0.1.9000
