@@ -1,10 +1,22 @@
-# Sample .travis.yml for R projects
-
 language: r
 warnings_are_errors: true
 sudo: required
-
 notifications:
   email:
     on_success: change
     on_failure: change
+after_success: if [ "$TRAVIS_OS_NAME" == "osx" ]; then Rscript -e 'covr::coveralls(type
+  = "all")'; fi
+before_deploy: if [ "$TRAVIS_OS_NAME" == "osx" ]; then rm -f *.tar.gz; fi
+r_check_args: "--as-cran --install-args=--build"
+
+deploy:
+  provider: releases
+  skip_cleanup: yes
+  api_key:
+    secure: feEQfSdWE8iN6Wl0E0rf8kdM1Z0Gcy5lNd854bB8UEO7O+kGgSc5oGdqCSF1Iys1VCdoG+w5Q2YMuvQUiOGOGW/OTdyu9lLk5Rim/TN4kSiIpDdIcBg9TK9P/F0G/IkzpdznxMQYFoXVDDZMAEZhrF6p5HDQVqz5bUrys0yfymg=
+  file_glob: yes
+  file: matlabr*.t*gz
+  'on':
+    tags: yes
+    repo: muschellij2/matlabr
