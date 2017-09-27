@@ -5,9 +5,16 @@
 #' @param try_defaults (logical) If \code{matlab} is not found from 
 #' \code{Sys.which}, and \code{matlab.path} not found, then try some 
 #' default PATHs for Linux and OS X.  
+#' @param desktop Should desktop be active for MATLAB?
+#' @param splash Should splash be active for MATLAB?
+#' @param display Should display be active for MATLAB?
 #' @export
 #' @return Character of command for matlab
-get_matlab = function(try_defaults = TRUE){
+get_matlab = function(
+  try_defaults = TRUE,
+  desktop = FALSE,
+  splash = FALSE,
+  display = FALSE){
   # find.matlab <- system("which matlab", ignore.stdout=TRUE)
   mat = paste0(
     "matlab", 
@@ -17,7 +24,19 @@ get_matlab = function(try_defaults = TRUE){
       "")
   )
   find.matlab = as.numeric(Sys.which(mat) == "")
-  matcmd <- paste0(mat, ' -nodesktop -nosplash -nodisplay -r ')
+  f = function(x, name) {
+    x = as.logical(x)
+    ifelse(x, "", paste0("-no", name))
+  }
+  desktop = f(desktop, "desktop")
+  splash = f(splash, "splash")
+  display = f(display, "display")
+  
+  matcmd <- paste0(mat, " ", 
+                   desktop, " ", 
+                   splash, " ", 
+                   display, " -r ")
+  
   if (find.matlab != 0) {
     mpath = getOption("matlab.path")
     

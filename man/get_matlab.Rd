@@ -4,12 +4,19 @@
 \alias{get_matlab}
 \title{Find matlab path}
 \usage{
-get_matlab(try_defaults = TRUE)
+get_matlab(try_defaults = TRUE, desktop = FALSE, splash = FALSE,
+  display = FALSE)
 }
 \arguments{
 \item{try_defaults}{(logical) If \code{matlab} is not found from 
 \code{Sys.which}, and \code{matlab.path} not found, then try some 
 default PATHs for Linux and OS X.}
+
+\item{desktop}{Should desktop be active for MATLAB?}
+
+\item{splash}{Should splash be active for MATLAB?}
+
+\item{display}{Should display be active for MATLAB?}
 }
 \value{
 Character of command for matlab
