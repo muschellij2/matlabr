@@ -5,7 +5,8 @@
 \title{Runs matlab code}
 \usage{
 run_matlab_code(code, endlines = TRUE, verbose = TRUE,
-  add_clear_all = FALSE, ...)
+  add_clear_all = FALSE, desktop = FALSE, splash = FALSE,
+  display = FALSE, ...)
 }
 \arguments{
 \item{code}{Character vector of code.}
@@ -16,6 +17,12 @@ pasted to each element of the vector.}
 \item{verbose}{Print out filename to run}
 
 \item{add_clear_all}{Add \code{clear all;} to the beginning of code}
+
+\item{desktop}{Should desktop be active for MATLAB?}
+
+\item{splash}{Should splash be active for MATLAB?}
+
+\item{display}{Should display be active for MATLAB?}
 
 \item{...}{Options passed to \code{\link{run_matlab_script}}}
 }

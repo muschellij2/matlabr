@@ -94,10 +94,16 @@ have_matlab = function(){
 #' @param fname Filename of matlab script (.m file)
 #' @param verbose print diagnostic messages
 #' @param ... Options passed to \code{\link{system}}
+#' @inheritParams get_matlab
 #' @export
 #' @return Exit status of matlab code
-run_matlab_script = function(fname, 
-                             verbose = TRUE, ...){
+run_matlab_script = function(
+  fname, 
+  verbose = TRUE, 
+  desktop = FALSE,
+  splash = FALSE,
+  display = FALSE,
+  ...){
   stopifnot(file.exists(fname))
   matcmd = get_matlab()
   cmd = paste0(' "', "try, run('", fname, "'); ",
@@ -112,6 +118,7 @@ run_matlab_script = function(fname,
   return(x)
 }
 
+
 #' @title Runs matlab code
 #'
 #' @description This function takes in matlab code, where
@@ -123,6 +130,7 @@ run_matlab_script = function(fname,
 #' @param verbose Print out filename to run
 #' @param add_clear_all Add \code{clear all;} to the beginning of code
 #' @param ... Options passed to \code{\link{run_matlab_script}}
+#' @inheritParams get_matlab
 #' @export
 #' @return Exit status of matlab code 
 #' @examples 
@@ -131,9 +139,13 @@ run_matlab_script = function(fname,
 #'    run_matlab_code(c("disp('The version of the matlab is:')", "disp(version)"))
 #'    run_matlab_code(c("x = 5", "disp(['The value of x is ', num2str(x)])"))
 #' }
-run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
-                           add_clear_all = FALSE,
-                           ...){
+run_matlab_code = function(
+  code, endlines = TRUE, verbose = TRUE,
+  add_clear_all = FALSE,
+  desktop = FALSE,
+  splash = FALSE,
+  display = FALSE,  
+  ...){
   # matcmd = get_matlab()
   code = c(ifelse(add_clear_all, "clear all;", ""), 
            paste0("cd('", getwd(), "');"), code)
@@ -154,51 +166,4 @@ run_matlab_code = function(code, endlines = TRUE, verbose = TRUE,
   }
   x = run_matlab_script(fname, verbose = verbose, ...)
   return(x)
-}
-
-
-
-#' @title Convert R vector to matlab cell mat
-#'
-#' @description This function takes in an R vector then turns it into 
-#' a cell list
-#' @param x Character vector of values
-#' @param matname Object in matlab to be assigned
-#' @export
-#' @return Character scalar of matlab code
-rvec_to_matlabclist = function(x, matname = NULL){
-  x = paste0("{'", x, "'};")
-  x = paste(x, collapse =  " ")
-  x = paste0('[', x, '];')
-  if (!is.null(matname)) x = paste0(matname, " = ", x)
-  x
-}
-
-
-
-#' @title Convert R vector to matlab cell mat
-#'
-#' @description This function takes in an R numeric and returns a
-#' status
-#' @param x Numeric vector of values
-#' @param row Create row vector instead of column vector
-#' @param sep separator to use to separate cells.  Will override row
-#' argument
-#' @param matname Object in matlab to be assigned
-#' @export
-#' @return Character scalar of matlab code
-#' @import stringr
-rvec_to_matlab = function(x, row = FALSE,
-                          sep = NULL,
-                          matname = NULL){
-  if (is.null(sep)) {
-    sep = ifelse(row, ",", ";")
-  }
-  x = paste0(x, sep)
-  x = paste(x, collapse = " ")
-  x = str_trim(x)
-  x = gsub(paste0(sep, "$"), "", x)
-  x = paste0("[", x, "];")
-  if (!is.null(matname)) x = paste0(matname, " = ", x)
-  x
 }

@@ -4,12 +4,19 @@
 \alias{run_matlab_script}
 \title{Run matlab script}
 \usage{
-run_matlab_script(fname, verbose = TRUE, ...)
+run_matlab_script(fname, verbose = TRUE, desktop = FALSE, splash = FALSE,
+  display = FALSE, ...)
 }
 \arguments{
 \item{fname}{Filename of matlab script (.m file)}
 
 \item{verbose}{print diagnostic messages}
+
+\item{desktop}{Should desktop be active for MATLAB?}
+
+\item{splash}{Should splash be active for MATLAB?}
+
+\item{display}{Should display be active for MATLAB?}
 
 \item{...}{Options passed to \code{\link{system}}}
 }
