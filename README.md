@@ -1,5 +1,5 @@
 
-[![Travis build status](https://travis-ci.org/muschellij2/matlabr.svg?branch=master)](https://travis-ci.org/muschellij2/matlabr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/matlabr?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/matlabr) [![Coverage status](https://coveralls.io/repos/github/muschellij2/matlabr/badge.svg?branch=master)](https://coveralls.io/r/muschellij2/matlabr?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/matlabr)](https://cran.r-project.org/package=matlabr)
+[![Travis build status](https://travis-ci.org/muschellij2/matlabr.svg?branch=master)](https://travis-ci.org/muschellij2/matlabr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/matlabr?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/matlabr) [![Coverage status](https://coveralls.io/repos/github/muschellij2/matlabr/badge.svg?branch=master)](https://coveralls.io/r/muschellij2/matlabr?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/matlabr)](https://cran.r-project.org/package=matlabr) [![Downloads](http://cranlogs.r-pkg.org/badges/matlabr)](http://cran.rstudio.com/package=matlabr)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 matlabr Package:
