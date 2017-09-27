@@ -6,3 +6,5 @@ NEWS.md
 README.md
 ^appveyor\.yml$
 ^codecov\.yml$
+^README\.Rmd$
+^README-.*\.png$
