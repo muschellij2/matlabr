@@ -56,7 +56,8 @@ get_matlab = function(
           "/usr/local/bin",
           "/usr/bin",
           paste0("/Applications/MATLAB_R", mac_ends, ".app/bin"),
-          paste0("C:/Program Files/MATLAB/R", mac_ends)
+          paste0("C:/Program Files/MATLAB/R", mac_ends, "/bin"),
+          paste0("D:/Program Files/MATLAB/R", mac_ends, "/bin")
         )
         for (ipath in def_paths) {
           def_path = file.path(ipath, mat)

@@ -1,8 +1,8 @@
 Package: matlabr
 Type: Package
 Title: An Interface for MATLAB using System Calls
-Version: 1.4.1
-Date: 2016-11-26
+Version: 1.4.2
+Date: 2017-09-27
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Provides users to call MATLAB from using the "system" command.
