@@ -10,6 +10,10 @@
 #' @param display Should display be active for MATLAB?
 #' @export
 #' @return Character of command for matlab
+#' @examples 
+#' if (have_matlab()) {
+#' get_matlab()
+#' }
 get_matlab = function(
   try_defaults = TRUE,
   desktop = FALSE,
@@ -24,13 +28,13 @@ get_matlab = function(
       "")
   )
   find.matlab = as.numeric(Sys.which(mat) == "")
-  f = function(x, name) {
+  myfunc = function(x, name) {
     x = as.logical(x)
     ifelse(x, "", paste0("-no", name))
   }
-  desktop = f(desktop, "desktop")
-  splash = f(splash, "splash")
-  display = f(display, "display")
+  desktop = myfunc(desktop, "desktop")
+  splash = myfunc(splash, "splash")
+  display = myfunc(display, "display")
   
   matcmd <- paste0(mat, " ", 
                    desktop, " ", 
@@ -80,6 +84,8 @@ get_matlab = function(
 #' MATLAB's path accessible 
 #' @export
 #' @return Logical \code{TRUE} is MATLAB is accessible, \code{FALSE} if not
+#' @examples 
+#' have_matlab()
 have_matlab = function(){
   x = suppressWarnings(try(get_matlab(), silent = TRUE))
   return(!inherits(x, "try-error"))
@@ -105,7 +111,10 @@ run_matlab_script = function(
   display = FALSE,
   ...){
   stopifnot(file.exists(fname))
-  matcmd = get_matlab()
+  matcmd = get_matlab(  
+    desktop = desktop,
+    splash = splash,
+    display = display)
   cmd = paste0(' "', "try, run('", fname, "'); ",
                "catch err, disp(err.message); ", 
                "exit(1); end; exit(0);", '"')  
@@ -130,7 +139,6 @@ run_matlab_script = function(
 #' @param verbose Print out filename to run
 #' @param add_clear_all Add \code{clear all;} to the beginning of code
 #' @param ... Options passed to \code{\link{run_matlab_script}}
-#' @inheritParams get_matlab
 #' @export
 #' @return Exit status of matlab code 
 #' @examples 
@@ -142,9 +150,6 @@ run_matlab_script = function(
 run_matlab_code = function(
   code, endlines = TRUE, verbose = TRUE,
   add_clear_all = FALSE,
-  desktop = FALSE,
-  splash = FALSE,
-  display = FALSE,  
   ...){
   # matcmd = get_matlab()
   code = c(ifelse(add_clear_all, "clear all;", ""), 

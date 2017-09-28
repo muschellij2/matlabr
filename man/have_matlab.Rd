@@ -13,3 +13,6 @@ Logical \code{TRUE} is MATLAB is accessible, \code{FALSE} if not
 Uses \code{\link{get_matlab}} to check if 
 MATLAB's path accessible
 }
+\examples{
+have_matlab()
+}

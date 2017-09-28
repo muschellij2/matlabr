@@ -25,3 +25,8 @@ Character of command for matlab
 This tries to find matlab's path using a system which
 command, and then, if not found, looks at \code{getOption("matlab.path")}.  If not path is found, it fails.
 }
+\examples{
+if (have_matlab()) {
+get_matlab()
+}
+}
