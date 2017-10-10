@@ -10,7 +10,7 @@ matlabr Package:
 Installation
 ------------
 
-You can install the stable version on [CRAN](https://cran.rstudio.com/web/packages/matlabr/index.html):
+You can install the stable version on [CRAN](https://cran.r-project.org/web/packages/matlabr/index.html):
 
 ``` r
 install.packages('matlabr', dependencies = TRUE)

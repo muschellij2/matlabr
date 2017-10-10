@@ -3,7 +3,11 @@ Type: Package
 Title: An Interface for MATLAB using System Calls
 Version: 1.4.3
 Date: 2017-10-10
-Author: John Muschelli <muschellij2@gmail.com>
+Authors@R: 
+    person(given = "John",
+           family = "Muschelli",
+           role = "cre",
+           email = "muschellij2@gmail.com")
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Provides users to call MATLAB from using the "system" command.
     Allows users to submit lines of code or MATLAB m files.
