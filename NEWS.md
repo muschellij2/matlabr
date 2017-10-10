@@ -1,3 +1,8 @@
+# CHANGES IN matlabr VERSION 1.4.2
+
+- Changed ability to have `nodesktop` and `nodisplay` when running code.
+  - Related to `spm12r` results report
+
 # CHANGES IN matlabr VERSION 1.1.2
 
 ## NEW FEATURES
