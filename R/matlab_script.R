@@ -8,6 +8,8 @@
 #' @param desktop Should desktop be active for MATLAB?
 #' @param splash Should splash be active for MATLAB?
 #' @param display Should display be active for MATLAB?
+#' @param wait Should R wait for the command to finish.  Both
+#' passed to \code{\link{system}} and adds the \code{-wait} flag.
 #' @export
 #' @return Character of command for matlab
 #' @examples 
@@ -18,7 +20,8 @@ get_matlab = function(
   try_defaults = TRUE,
   desktop = FALSE,
   splash = FALSE,
-  display = FALSE){
+  display = FALSE,
+  wait = TRUE){
   # find.matlab <- system("which matlab", ignore.stdout=TRUE)
   mat = paste0(
     "matlab", 
@@ -35,8 +38,13 @@ get_matlab = function(
   desktop = myfunc(desktop, "desktop")
   splash = myfunc(splash, "splash")
   display = myfunc(display, "display")
+  wait = ifelse(
+      .Platform$OS.type %in% "windows", 
+      ifelse(wait, "-wait", ""), 
+      "")
   
   matcmd <- paste0(mat, " ", 
+                   wait, " ",
                    desktop, " ", 
                    splash, " ", 
                    display, " -r ")
@@ -110,12 +118,14 @@ run_matlab_script = function(
   desktop = FALSE,
   splash = FALSE,
   display = FALSE,
+  wait = TRUE,
   ...){
   stopifnot(file.exists(fname))
   matcmd = get_matlab(  
     desktop = desktop,
     splash = splash,
-    display = display)
+    display = display,
+    wait = wait)
   cmd = paste0(' "', "try, run('", fname, "'); ",
                "catch err, disp(err.message); ", 
                "exit(1); end; exit(0);", '"')  
@@ -124,7 +134,7 @@ run_matlab_script = function(
     message("Command run is:")
     message(cmd)
   }
-  x <- system(cmd, ...)
+  x <- system(cmd, wait = wait, ...)
   return(x)
 }
 

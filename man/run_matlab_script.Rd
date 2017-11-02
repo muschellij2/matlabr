@@ -5,7 +5,7 @@
 \title{Run matlab script}
 \usage{
 run_matlab_script(fname, verbose = TRUE, desktop = FALSE, splash = FALSE,
-  display = FALSE, ...)
+  display = FALSE, wait = TRUE, ...)
 }
 \arguments{
 \item{fname}{Filename of matlab script (.m file)}
@@ -17,6 +17,9 @@ run_matlab_script(fname, verbose = TRUE, desktop = FALSE, splash = FALSE,
 \item{splash}{Should splash be active for MATLAB?}
 
 \item{display}{Should display be active for MATLAB?}
+
+\item{wait}{Should R wait for the command to finish.  Both
+passed to \code{\link{system}} and adds the \code{-wait} flag.}
 
 \item{...}{Options passed to \code{\link{system}}}
 }
