@@ -1,3 +1,7 @@
+# CHANGES IN matlabr VERSION 1.5.0
+
+- Added Windows capabilities
+
 # CHANGES IN matlabr VERSION 1.4.3
 
 - Fixed https problem.
