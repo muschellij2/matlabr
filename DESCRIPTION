@@ -1,8 +1,8 @@
 Package: matlabr
 Type: Package
 Title: An Interface for MATLAB using System Calls
-Version: 1.5.0
-Date: 2018-02-01
+Version: 1.5.1
+Date: 2018-03-18
 Authors@R: person(given = "John",
            family = "Muschelli",
            role = c("aut", "cre"),

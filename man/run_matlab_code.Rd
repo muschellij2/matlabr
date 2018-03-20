@@ -5,7 +5,7 @@
 \title{Runs matlab code}
 \usage{
 run_matlab_code(code, endlines = TRUE, verbose = TRUE,
-  add_clear_all = FALSE, ...)
+  add_clear_all = FALSE, paths_to_add = NULL, ...)
 }
 \arguments{
 \item{code}{Character vector of code.}
@@ -16,6 +16,9 @@ pasted to each element of the vector.}
 \item{verbose}{Print out filename to run}
 
 \item{add_clear_all}{Add \code{clear all;} to the beginning of code}
+
+\item{paths_to_add}{Character vector of PATHs to add to the 
+script using \code{\link{add_path}}}
 
 \item{...}{Options passed to \code{\link{run_matlab_script}}}
 }
@@ -30,6 +33,7 @@ status
 \examples{
 if (have_matlab()){
    run_matlab_code("disp(version)")
+   run_matlab_code("disp(version)", paths_to_add = "~/")
    run_matlab_code(c("disp('The version of the matlab is:')", "disp(version)"))
    run_matlab_code(c("x = 5", "disp(['The value of x is ', num2str(x)])"))
 }

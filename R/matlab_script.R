@@ -149,22 +149,30 @@ run_matlab_script = function(
 #' pasted to each element of the vector.
 #' @param verbose Print out filename to run
 #' @param add_clear_all Add \code{clear all;} to the beginning of code
+#' @param paths_to_add Character vector of PATHs to add to the 
+#' script using \code{\link{add_path}}
 #' @param ... Options passed to \code{\link{run_matlab_script}}
 #' @export
 #' @return Exit status of matlab code 
 #' @examples 
 #' if (have_matlab()){
 #'    run_matlab_code("disp(version)")
+#'    run_matlab_code("disp(version)", paths_to_add = "~/")
 #'    run_matlab_code(c("disp('The version of the matlab is:')", "disp(version)"))
 #'    run_matlab_code(c("x = 5", "disp(['The value of x is ', num2str(x)])"))
 #' }
 run_matlab_code = function(
   code, endlines = TRUE, verbose = TRUE,
   add_clear_all = FALSE,
+  paths_to_add = NULL,
   ...){
   # matcmd = get_matlab()
   code = c(ifelse(add_clear_all, "clear all;", ""), 
            paste0("cd('", getwd(), "');"), code)
+  if (!is.null(paths_to_add)) {
+    paths_to_add = add_path(paths_to_add)
+    code = c(code, paths_to_add)
+  }
   sep = ifelse(endlines, ";", " ")
   code = paste0(code, sep = sep, collapse = "\n")
   code = gsub(";;", ";", code)
