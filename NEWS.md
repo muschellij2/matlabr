@@ -1,3 +1,8 @@
+# CHANGES IN matlabr VERSION 1.5.2
+
+- Added single threaded mode in `run_matlab_script`.
+
+
 # CHANGES IN matlabr VERSION 1.5.0
 
 - Added Windows capabilities
