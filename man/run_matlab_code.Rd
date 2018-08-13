@@ -32,9 +32,14 @@ status
 }
 \examples{
 if (have_matlab()){
+   run_matlab_code(c("disp('The version of the matlab is:')", "disp(version)"),
+   paths_to_add = "~/")
+}
+\dontrun{ 
+if (have_matlab()){ 
    run_matlab_code("disp(version)")
    run_matlab_code("disp(version)", paths_to_add = "~/")
-   run_matlab_code(c("disp('The version of the matlab is:')", "disp(version)"))
    run_matlab_code(c("x = 5", "disp(['The value of x is ', num2str(x)])"))
+}
 }
 }
