@@ -5,7 +5,7 @@
 \title{Find matlab path}
 \usage{
 get_matlab(try_defaults = TRUE, desktop = FALSE, splash = FALSE,
-  display = FALSE, wait = TRUE)
+  display = FALSE, wait = TRUE, single_thread = FALSE)
 }
 \arguments{
 \item{try_defaults}{(logical) If \code{matlab} is not found from 
@@ -20,6 +20,9 @@ default PATHs for Linux and OS X.}
 
 \item{wait}{Should R wait for the command to finish.  Both
 passed to \code{\link{system}} and adds the \code{-wait} flag.}
+
+\item{single_thread}{Should the flag \code{-singleCompThread} 
+be executed to limit MATLAB to a single computational thread?}
 }
 \value{
 Character of command for matlab

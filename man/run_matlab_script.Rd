@@ -4,8 +4,9 @@
 \alias{run_matlab_script}
 \title{Run matlab script}
 \usage{
-run_matlab_script(fname, verbose = TRUE, desktop = FALSE, splash = FALSE,
-  display = FALSE, wait = TRUE, ...)
+run_matlab_script(fname, verbose = TRUE, desktop = FALSE,
+  splash = FALSE, display = FALSE, wait = TRUE,
+  single_thread = FALSE, ...)
 }
 \arguments{
 \item{fname}{Filename of matlab script (.m file)}
@@ -20,6 +21,9 @@ run_matlab_script(fname, verbose = TRUE, desktop = FALSE, splash = FALSE,
 
 \item{wait}{Should R wait for the command to finish.  Both
 passed to \code{\link{system}} and adds the \code{-wait} flag.}
+
+\item{single_thread}{Should the flag \code{-singleCompThread} 
+be executed to limit MATLAB to a single computational thread?}
 
 \item{...}{Options passed to \code{\link{system}}}
 }

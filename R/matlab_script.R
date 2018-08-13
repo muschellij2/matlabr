@@ -10,6 +10,8 @@
 #' @param display Should display be active for MATLAB?
 #' @param wait Should R wait for the command to finish.  Both
 #' passed to \code{\link{system}} and adds the \code{-wait} flag.
+#' @param single_thread Should the flag \code{-singleCompThread} 
+#' be executed to limit MATLAB to a single computational thread?
 #' @export
 #' @return Character of command for matlab
 #' @examples 
@@ -21,7 +23,8 @@ get_matlab = function(
   desktop = FALSE,
   splash = FALSE,
   display = FALSE,
-  wait = TRUE){
+  wait = TRUE,
+  single_thread = FALSE){
   # find.matlab <- system("which matlab", ignore.stdout=TRUE)
   mat = paste0(
     "matlab", 
@@ -47,6 +50,7 @@ get_matlab = function(
                    wait, " ",
                    desktop, " ", 
                    splash, " ", 
+                   ifelse(single_thread, "-singleCompThread ", ""),
                    display, " -r ")
   
   if (find.matlab != 0) {
@@ -119,13 +123,15 @@ run_matlab_script = function(
   splash = FALSE,
   display = FALSE,
   wait = TRUE,
+  single_thread = FALSE,
   ...){
   stopifnot(file.exists(fname))
   matcmd = get_matlab(  
     desktop = desktop,
     splash = splash,
     display = display,
-    wait = wait)
+    wait = wait,
+    single_thread = single_thread)
   cmd = paste0(' "', "try, run('", fname, "'); ",
                "catch err, disp(err.message); ", 
                "exit(1); end; exit(0);", '"')  
