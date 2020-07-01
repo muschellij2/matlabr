@@ -4,8 +4,14 @@
 \alias{run_matlab_code}
 \title{Runs matlab code}
 \usage{
-run_matlab_code(code, endlines = TRUE, verbose = TRUE,
-  add_clear_all = FALSE, paths_to_add = NULL, ...)
+run_matlab_code(
+  code,
+  endlines = TRUE,
+  verbose = TRUE,
+  add_clear_all = FALSE,
+  paths_to_add = NULL,
+  ...
+)
 }
 \arguments{
 \item{code}{Character vector of code.}
@@ -36,7 +42,12 @@ if (have_matlab()){
    paths_to_add = "~/")
 }
 \dontrun{ 
-if (have_matlab()){ 
+if (have_matlab()){
+system.time({ 
+run_matlab_code(c("disp('The version of the matlab is:')", 
+"disp(version)"), jvm = FALSE, 
+figure_windows = FALSE) 
+})
    run_matlab_code("disp(version)")
    run_matlab_code("disp(version)", paths_to_add = "~/")
    run_matlab_code(c("x = 5", "disp(['The value of x is ', num2str(x)])"))

@@ -4,8 +4,16 @@
 \alias{get_matlab}
 \title{Find matlab path}
 \usage{
-get_matlab(try_defaults = TRUE, desktop = FALSE, splash = FALSE,
-  display = FALSE, wait = TRUE, single_thread = FALSE)
+get_matlab(
+  try_defaults = TRUE,
+  desktop = FALSE,
+  splash = FALSE,
+  display = FALSE,
+  jvm = TRUE,
+  figure_windows = TRUE,
+  wait = TRUE,
+  single_thread = FALSE
+)
 }
 \arguments{
 \item{try_defaults}{(logical) If \code{matlab} is not found from 
@@ -17,6 +25,12 @@ default PATHs for Linux and OS X.}
 \item{splash}{Should splash be active for MATLAB?}
 
 \item{display}{Should display be active for MATLAB?}
+
+\item{jvm}{should JVM be be loaded?  If \code{FALSE}, then
+\code{-nojvm}}
+
+\item{figure_windows}{should figure windows be enabled.  If
+not, \code{-noFigureWindows} will be called}
 
 \item{wait}{Should R wait for the command to finish.  Both
 passed to \code{\link{system}} and adds the \code{-wait} flag.}

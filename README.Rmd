@@ -1,5 +1,5 @@
 ---
-  output: github_document
+output: github_document
 ---
 
 [![Travis build status](https://travis-ci.org/muschellij2/matlabr.svg?branch=master)](https://travis-ci.org/muschellij2/matlabr)

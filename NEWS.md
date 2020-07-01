@@ -1,3 +1,7 @@
+# CHANGES IN matlabr VERSION 1.6.0
+
+- Added `jvm` and `figure_windows` arguments.
+
 # CHANGES IN matlabr VERSION 1.5.2
 
 - Added single threaded mode in `run_matlab_script`.

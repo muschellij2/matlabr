@@ -4,9 +4,18 @@
 \alias{run_matlab_script}
 \title{Run matlab script}
 \usage{
-run_matlab_script(fname, verbose = TRUE, desktop = FALSE,
-  splash = FALSE, display = FALSE, wait = TRUE,
-  single_thread = FALSE, ...)
+run_matlab_script(
+  fname,
+  verbose = TRUE,
+  desktop = FALSE,
+  splash = FALSE,
+  display = FALSE,
+  jvm = TRUE,
+  figure_windows = TRUE,
+  wait = TRUE,
+  single_thread = FALSE,
+  ...
+)
 }
 \arguments{
 \item{fname}{Filename of matlab script (.m file)}
@@ -18,6 +27,12 @@ run_matlab_script(fname, verbose = TRUE, desktop = FALSE,
 \item{splash}{Should splash be active for MATLAB?}
 
 \item{display}{Should display be active for MATLAB?}
+
+\item{jvm}{should JVM be be loaded?  If \code{FALSE}, then
+\code{-nojvm}}
+
+\item{figure_windows}{should figure windows be enabled.  If
+not, \code{-noFigureWindows} will be called}
 
 \item{wait}{Should R wait for the command to finish.  Both
 passed to \code{\link{system}} and adds the \code{-wait} flag.}

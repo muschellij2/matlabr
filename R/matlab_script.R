@@ -12,6 +12,10 @@
 #' passed to \code{\link{system}} and adds the \code{-wait} flag.
 #' @param single_thread Should the flag \code{-singleCompThread} 
 #' be executed to limit MATLAB to a single computational thread?
+#' @param jvm should JVM be be loaded?  If \code{FALSE}, then
+#' \code{-nojvm}
+#' @param figure_windows should figure windows be enabled.  If
+#' not, \code{-noFigureWindows} will be called
 #' @export
 #' @return Character of command for matlab
 #' @examples 
@@ -23,6 +27,8 @@ get_matlab = function(
   desktop = FALSE,
   splash = FALSE,
   display = FALSE,
+  jvm = TRUE,
+  figure_windows = TRUE,
   wait = TRUE,
   single_thread = FALSE){
   # find.matlab <- system("which matlab", ignore.stdout=TRUE)
@@ -41,6 +47,8 @@ get_matlab = function(
   desktop = myfunc(desktop, "desktop")
   splash = myfunc(splash, "splash")
   display = myfunc(display, "display")
+  jvm = ifelse(!jvm, "-nojvm", "")
+  figure_windows = ifelse(!figure_windows, "-noFigureWindows", "")
   wait = ifelse(
       .Platform$OS.type %in% "windows", 
       ifelse(wait, "-wait", ""), 
@@ -50,6 +58,8 @@ get_matlab = function(
                    wait, " ",
                    desktop, " ", 
                    splash, " ", 
+                   jvm, " ",
+                   figure_windows, " ",
                    ifelse(single_thread, "-singleCompThread ", ""),
                    display, " -r ")
   
@@ -122,6 +132,8 @@ run_matlab_script = function(
   desktop = FALSE,
   splash = FALSE,
   display = FALSE,
+  jvm = TRUE,
+  figure_windows = TRUE,  
   wait = TRUE,
   single_thread = FALSE,
   ...){
@@ -131,6 +143,8 @@ run_matlab_script = function(
     splash = splash,
     display = display,
     wait = wait,
+    jvm = jvm,
+    figure_windows = figure_windows,
     single_thread = single_thread)
   cmd = paste0(' "', "try, run('", fname, "'); ",
                "catch err, disp(err.message); ", 
@@ -166,7 +180,12 @@ run_matlab_script = function(
 #'    paths_to_add = "~/")
 #' }
 #' \dontrun{ 
-#' if (have_matlab()){ 
+#' if (have_matlab()){
+#' system.time({ 
+#' run_matlab_code(c("disp('The version of the matlab is:')", 
+#' "disp(version)"), jvm = FALSE, 
+#' figure_windows = FALSE) 
+#' })
 #'    run_matlab_code("disp(version)")
 #'    run_matlab_code("disp(version)", paths_to_add = "~/")
 #'    run_matlab_code(c("x = 5", "disp(['The value of x is ', num2str(x)])"))
