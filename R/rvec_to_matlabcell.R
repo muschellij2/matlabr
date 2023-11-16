@@ -15,7 +15,7 @@ rvec_to_matlabcell = function(x,
                               transpose = FALSE){
   x = paste0("'", x, "'", sep)
   x = paste(x, collapse = " ")
-  x = paste0("{", x, "}", ifelse(transpose, "'", ""), sep)
+  x = paste0("{", x, "}", ifelse(transpose, "'", ""), ";")
   if (!is.null(matname)) x = paste0(matname, " = ", x)
   x
 }
