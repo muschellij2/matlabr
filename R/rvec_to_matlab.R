@@ -16,10 +16,10 @@ rvec_to_matlabclist = function(x, matname = NULL){
 
 
 
-#' @title Convert R vector to matlab cell mat
+#' @title Convert R vector to matlab vector
 #'
-#' @description This function takes in an R numeric and returns a
-#' status
+#' @description This function takes in an R numeric and turns it into
+#' a Matlab vector
 #' @param x Numeric vector of values
 #' @param row Create row vector instead of column vector
 #' @param sep separator to use to separate cells.  Will override row
