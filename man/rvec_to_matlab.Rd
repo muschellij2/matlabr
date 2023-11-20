@@ -2,7 +2,7 @@
 % Please edit documentation in R/rvec_to_matlab.R
 \name{rvec_to_matlab}
 \alias{rvec_to_matlab}
-\title{Convert R vector to matlab cell mat}
+\title{Convert R vector to matlab vector}
 \usage{
 rvec_to_matlab(x, row = FALSE, sep = NULL, matname = NULL)
 }
@@ -20,6 +20,6 @@ argument}
 Character scalar of matlab code
 }
 \description{
-This function takes in an R numeric and returns a
-status
+This function takes in an R numeric and turns it into
+a Matlab vector
 }
