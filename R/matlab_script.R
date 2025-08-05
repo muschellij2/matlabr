@@ -201,7 +201,7 @@ run_matlab_code = function(
            paste0("cd('", getwd(), "');"), code)
   if (!is.null(paths_to_add)) {
     paths_to_add = add_path(paths_to_add)
-    code = c(code, paths_to_add)
+    code = c(paths_to_add, code)
   }
   sep = ifelse(endlines, ";", " ")
   code = paste0(code, sep = sep, collapse = "\n")
