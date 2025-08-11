@@ -1,16 +1,18 @@
 #' Create PATHs to add to MATLAB PATHs
 #'
-#' @param path path to add
+#' @param path vector of paths to add
 #'
 #' @return A character vector
 #' @examples 
 #' add_path("~/")
 #' gen_path("~/")
-#' gen_path("~/")
+#' add_gen_path("~/")
+#' You can also use multiple paths at once:
+#' add_path(c("~/", "/opt")
 #' @export
 add_path = function(path) {
   path = sapply(path, function(x) {
-    paste0("addpath('", path, "');")
+    paste0("addpath('", x, "');")
   })
   path = unname(unlist(path))
   return(path)
@@ -20,7 +22,7 @@ add_path = function(path) {
 #' @export
 gen_path = function(path) {
   path = sapply(path, function(x) {
-    paste0("genpath('", path, "');")
+    paste0("genpath('", x, "');")
   })
   path = unname(unlist(path))
   return(path)
